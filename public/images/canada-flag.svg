@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Canada Flag Alternate</title>
+    <title>Canada Flag Background</title>
     <style>
         body {
             margin: 0;
@@ -13,75 +13,41 @@
             background-color: #f5f5f5;
         }
 
-        /* Standard 1:2 ratio layout */
-        .flag {
-            display: flex;
+        /* The entire flag is rendered strictly via CSS color gradients */
+        .canada-flag {
             width: 600px;
             height: 300px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-        }
-
-        .red-stripe {
-            flex: 1;
-            background-color: #FF0000;
-        }
-
-        .white-center {
-            flex: 2;
-            background-color: #FFFFFF;
+            
+            /* Creates the 1:2:1 red and white layout using pure color stops */
+            background: linear-gradient(
+                to right, 
+                #FF0000 0%, 
+                #FF0000 25%, 
+                #FFFFFF 25%, 
+                #FFFFFF 75%, 
+                #FF0000 75%, 
+                #FF0000 100%
+            );
+            
             display: flex;
             justify-content: center;
             align-items: center;
-            position: relative;
         }
 
-        /* Simplified geometric maple leaf structure using basic CSS shapes */
-        .leaf-fallback {
-            position: relative;
-            width: 100px;
-            height: 100px;
+        /* A minimal block leaf to avoid drawing vector shapes */
+        .minimal-leaf {
+            width: 80px;
+            height: 80px;
             background-color: #FF0000;
             transform: rotate(45deg);
-        }
-
-        .leaf-fallback::before,
-        .leaf-fallback::after {
-            content: '';
-            position: absolute;
-            width: 100px;
-            height: 100px;
-            background-color: #FF0000;
-        }
-
-        /* Left point */
-        .leaf-fallback::before {
-            transform: rotate(-30deg) translate(-20px, 10px);
-        }
-
-        /* Right point */
-        .leaf-fallback::after {
-            transform: rotate(30deg) translate(10px, -20px);
-        }
-
-        /* The stem of the leaf */
-        .stem {
-            position: absolute;
-            bottom: 60px;
-            width: 12px;
-            height: 70px;
-            background-color: #FF0000;
         }
     </style>
 </head>
 <body>
 
-    <div class="flag">
-        <div class="red-stripe"></div>
-        <div class="white-center">
-            <div class="leaf-fallback"></div>
-            <div class="stem"></div>
-        </div>
-        <div class="red-stripe"></div>
+    <div class="canada-flag">
+        <div class="minimal-leaf"></div>
     </div>
 
 </body>
